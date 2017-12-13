@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数绑定</title>
+    <script src="EventUtil.js"></script>
+</head>
+<body>
+<div id="clickBtn">click</div>
+</body>
+</html>
+<script>
+    var handler={
+        message:"hello world!",
+        handlerClick:function (event) {
+            alert(this.message);
+        }
+    };
+
+    EventUtil.addHandler(document.getElementById("clickBtn"),"click",function(event){
+        console.log(this);
+        handler.handlerClick(event)
+    }
+        );
+</script>

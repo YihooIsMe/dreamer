@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Canvas</title>
+    <style>
+        #drawing{
+            border:1px solid black;
+        }
+    </style>
+</head>
+<body>
+<canvas id="drawing" width="500px" height="300px;">Don't support!</canvas>
+</body>
+</html>
+<script>
+    var drawing=document.getElementById("drawing");
+    if(drawing.getContext){
+        console.log(1);
+        var content=drawing.getContext("2d");
+        content.fillStyle="pink";
+        content.fillRect(100,100,200,100);
+
+        content.strokeStyle="#aaa";
+        content.strokeRect(0,0,100,100)
+    }
+</script>

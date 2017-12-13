@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>canvas</title>
+    <style>
+        #drawing{
+            border:1px solid black;
+        }
+    </style>
+</head>
+<body>
+<canvas id="drawing" width="500" height="500">Don't support!</canvas>
+</body>
+</html>
+<script>
+    var drawing=document.getElementById("drawing");
+    if(drawing.getContext){
+        var content=drawing.getContext("2d");
+        content.beginPath();
+        content.arc(300,300,100,0,2*Math.PI,false);
+        content.moveTo(395,300);
+        content.arc(300,300,95,0,2*Math.PI,false);
+        content.moveTo(300,230);
+        content.lineTo(300,300);
+        content.lineTo(230,300);
+        content.stroke();
+
+        content.font="bold 14px Arial";
+        content.textAlign='center';
+        content.textBaseline="middle";
+        content.fillText('12',300,220);
+
+        content.textAlign="start";
+        content.fillText('12',300,240);
+
+        content.textAlign="end";
+        content.fillText('12',300,260);
+        console.log(content.isPointInPath(280,280));
+    }
+</script>

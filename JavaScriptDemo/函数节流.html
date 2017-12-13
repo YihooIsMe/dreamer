@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数节流</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var processor = {
+        timeoutId: null,
+//实际进行处理的方法
+        performProcessing: function(){
+//实际执行的代码
+        },
+//初始处理调用的方法
+        process: function(){
+            clearTimeout(this.timeoutId);
+            var that = this;
+            console.log(this);
+            this.timeoutId = setTimeout(function(){
+                console.log(this);
+                that.performProcessing();
+            }, 100);
+        }
+    };
+    //尝试开始执行
+    processor.process();
+</script>

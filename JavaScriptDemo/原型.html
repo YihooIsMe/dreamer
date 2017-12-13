@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+    </style>
+</head>
+<body>
+<div style="height:150px;"></div>
+<div id="scroll">123</div>
+<div style="height:300px;"></div>
+</body>
+</html>
+<script>
+
+    var clientHeiht=document.documentElement.clientHeight;
+    console.log(clientHeiht);
+    var scr=document.getElementById("scroll");
+    scr.style.height=(clientHeiht-150-300)+"px";
+/*
+    function Person(){
+
+    }
+
+    Person.prototype.name="yihu";
+    Person.prototype.age=26;
+    Person.prototype.job="engineer";
+    Person.prototype.sayName=function(){
+        alert(this.name);
+    };
+
+    var person1=new Person();
+    person1.name="lhr";
+    console.log(person1.name);
+/!*
+    delete person1.name;
+    console.log(person1.name);
+    delete person1.name;
+    console.log(person1.name);
+*!/
+    person1.sayName();
+*/
+</script>

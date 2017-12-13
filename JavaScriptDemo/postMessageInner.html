@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>postMessageInner</title>
+    <script src="EventUtil.js"></script>
+</head>
+<body>
+<div id="inner"></div>
+<input type="text" id="innerMessage">
+<br>
+<input type="button" value="Send to parent!" id="inBtn">
+</body>
+</html>
+<script>
+    EventUtil.addHandler(window,"message",function (event) {
+        var inner=document.getElementById("inner");
+        inner.innerHTML="Parent said:"+event.data;
+    })
+
+    EventUtil.addHandler(document.getElementById("inBtn"),"click",function () {
+        var message=document.getElementById("innerMessage").value;
+        if(parent.postMessage){
+            parent.postMessage(message,"*");
+        }else{
+            alert("Your browser does't support!");
+        }
+    })
+</script>

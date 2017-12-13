@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Duff</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var values=[1,2,3,4,5,6,7,8,9,10];
+    var iterations=Math.floor(values.length/8);
+    var startAt=values.length%8;
+    var i=0;
+
+    do{
+        switch (startAt){
+            case 0:console.log(values[i++]);
+            case 7:console.log(values[i++]);
+            case 6:console.log(values[i++]);
+            case 5:console.log(values[i++]);
+            case 4:console.log(values[i++]);
+            case 3:console.log(values[i++]);
+            case 2:console.log(values[i++]);
+            case 1:console.log(values[i++]);
+        }
+
+        startAt=0;
+    }while (iterations-->0);
+</script>

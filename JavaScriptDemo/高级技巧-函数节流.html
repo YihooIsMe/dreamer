@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var processor={
+        timeoutId:null,
+        performProcessing:function(){
+
+        },
+
+        process:function(){
+            clearTimeout(this.timeoutId);
+            console.log(this.timeoutId);
+            var that=this;
+            console.log(that);
+            this.timeoutId=setTimeout(function(){
+                that.performProcessing();
+                console.log(that);
+            },100);
+
+        }
+
+    };
+
+    processor.process();
+
+
+</script>
