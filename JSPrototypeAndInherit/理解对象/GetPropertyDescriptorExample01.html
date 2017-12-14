@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Get Property Descriptor Example</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var book={};
+    Object.defineProperties(book,{
+        _year:{
+            value:2004
+        },
+        edition:{
+            value:1
+        },
+        year:{
+            get:function () {
+                return this._year;
+            },
+            set:function (newValue) {
+                if(newValue>2004){
+                    this._year=newValue;
+                    this.edition+=newValue-2004;
+                }
+            }
+        }
+    });
+
+    var descriptor1=Object.getOwnPropertyDescriptor(book,"_year");
+    console.log(descriptor1);
+
+    var descriptor2=Object.getOwnPropertyDescriptor(book,"year");
+    console.log(descriptor2);
+</script>

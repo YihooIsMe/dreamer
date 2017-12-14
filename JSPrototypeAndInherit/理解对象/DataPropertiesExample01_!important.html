@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Data Properties Example</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var person={};
+//    person.name="yihu1";
+    Object.defineProperty(person,"name",{
+        writable:false,
+        value:"yihoo"
+    });
+    console.log(person.name);
+    person.name="yihu";
+    console.log(person.name);
+    for(var attr in person){
+        console.log(person[attr]);
+    }
+    delete person.name;
+    console.log(person.name);
+
+    var anotherPerson={};
+    anotherPerson.age=27;
+    console.log(anotherPerson.age);
+    /*delete person.age;
+    console.log(person.age);*/
+    Object.defineProperty(anotherPerson,"name",{
+//        enumerable:true,
+        value:"yihu"
+    });
+    console.log(anotherPerson.name);
+    for(var attr in anotherPerson){
+        console.log(anotherPerson[attr]);
+    }
+    console.log(anotherPerson.name);
+</script>

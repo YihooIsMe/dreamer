@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Constructor Pattern Example</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function Person(name, age, job) {
+        this.name=name;
+        this.age=age;
+        this.job=job;
+        this.sayName=function () {
+            console.log(this.name);
+        }
+    }
+
+    var person1=new Person('yihu',26,"it");
+    var person2=new Person('lhr',27,"engineer");
+    person1.sayName();
+    person2.sayName();
+    console.log(person1.constructor===Person);
+    console.log(person2.constructor===Person);
+    console.log(person1 instanceof Object);
+    console.log(person1 instanceof Person);
+    console.log(person2 instanceof Object);
+    console.log(person2 instanceof Person);
+
+/*    Person("mq",27,"doctor");
+    console.log(window.name);
+    window.sayName()*/
+</script>
