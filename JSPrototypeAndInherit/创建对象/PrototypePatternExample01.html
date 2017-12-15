@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prototype Pattern Example</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function Person() {
+
+    }
+    Person.prototype.name="yi";
+    Person.prototype.age=26;
+    Person.prototype.job="it";
+    Person.prototype.sayName=function () {
+        console.log(this.name);
+    };
+    console.log(Person.prototype);
+    var person1=new Person();
+    var person2=new Person();
+    console.log(person1);
+    person1.sayName();
+    person2.sayName();
+    console.log(person1.sayName==person2.sayName);
+    console.log(Person.prototype.isPrototypeOf(person1));
+    console.log(Person.prototype.isPrototypeOf(person2));
+    console.log(Object.getPrototypeOf(person1)==Person.prototype);
+    console.log(Object.getPrototypeOf(person1).name);
+</script>

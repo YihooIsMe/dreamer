@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prototype Pattern Example</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function Person() {
+
+    }
+    Person.prototype.name="yi";
+    Person.prototype.age=26;
+    Person.prototype.job="it";
+    Person.prototype.sayName=function () {
+        console.log(this);
+        console.log(this.name);
+    };
+    var person1=new Person();
+    var person2=new Person();
+    console.log(person1);
+    person1.name=null;
+    console.log(person1);
+    person1.sayName();
+    console.log(person1.name);
+    console.log(person2.name)
+</script>

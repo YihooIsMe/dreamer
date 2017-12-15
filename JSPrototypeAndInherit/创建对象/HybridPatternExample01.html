@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hybrid Pattern Example</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function Person(name, age, job) {
+        this.name=name;
+        this.age=age;
+        this.job=job;
+        this.friends=["Shelby","Court"]
+    }
+
+    Person.prototype={
+        constructor:Person,
+        sayName:function () {
+            console.log(this.name);
+        }
+    };
+
+    var person1=new Person("yihu",26,"IT");
+    var person2=new Person("mq",27,"采购");
+
+    person1.friends.push("yihoo");
+    console.log(person1.friends);
+    console.log(person2.friends);
+    console.log(person1.friends===person2.friends);
+    console.log(person1.sayName===person2.sayName);
+</script>

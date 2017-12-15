@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Constructor Pattern Example</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function Person() {
+
+    }
+
+    Person.prototype={
+        name:"yihu",
+        age:26,
+        job:"web前端工程师",
+        sayName:function () {
+            console.log(this.name);
+        }
+    };
+    var person=new Person();
+    console.log(person instanceof Person);
+    console.log(person instanceof Object);
+    console.log(Person.prototype.constructor==Person);
+    console.log(person.constructor==Object);
+</script>

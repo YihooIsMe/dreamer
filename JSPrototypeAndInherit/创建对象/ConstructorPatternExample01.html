@@ -20,6 +20,8 @@
 
     var person1=new Person('yihu',26,"it");
     var person2=new Person('lhr',27,"engineer");
+    console.log(person1);
+    console.log(person2);
     person1.sayName();
     person2.sayName();
     console.log(person1.constructor===Person);
@@ -28,6 +30,9 @@
     console.log(person1 instanceof Person);
     console.log(person2 instanceof Object);
     console.log(person2 instanceof Person);
+    console.log(Person instanceof Object);
+    console.log(Person instanceof Person);
+    console.log(Object instanceof Object);
 
 /*    Person("mq",27,"doctor");
     console.log(window.name);
