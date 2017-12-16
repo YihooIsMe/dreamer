@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prototypal Inheritance Example</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function object(o) {
+        function F() {}
+        F.prototype=o;
+        console.log(F.prototype);
+        return new F();
+    }
+
+    var person={
+        name:"Nicholas",
+        friends:["Shelby","Court","Van"]
+    };
+
+    var anotherPerson=object(person);
+    console.log(Object.getPrototypeOf(anotherPerson));
+    console.log(person.isPrototypeOf(anotherPerson));
+    anotherPerson.name="Greg";
+    anotherPerson.friends.push("Rob");
+    console.log(anotherPerson);
+    console.log(anotherPerson.friends);
+    console.log(person.name);
+    console.log(person.friends);
+
+    var yetAnotherPerson=object(person);
+    yetAnotherPerson.name="Linda";
+    yetAnotherPerson.friends.push("Barbie");
+    console.log(yetAnotherPerson);
+    console.log(yetAnotherPerson.prototype);
+    console.log(person.name);
+    console.log(person.friends);
+</script>
