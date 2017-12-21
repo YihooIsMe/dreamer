@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Block Scope Example</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            function createBlock() {
+                (function () {
+                    for(var i=0;i<5;i++){
+                        alert(i);
+                    }
+                })();
+
+                alert(i);
+            }
+
+            createBlock()
+        </script>
+     
+    </body>
+</html>

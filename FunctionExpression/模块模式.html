@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>静态私有变量</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    (function () {
+       var name="";
+
+       Person=function (value) {
+           name=value;
+       };
+
+       Person.prototype.getName=function () {
+           return name;
+       };
+
+       Person.prototype.setName=function (value) {
+           name=value;
+       };
+
+    })();
+
+    var person2=new Person();
+    console.log(person2.getName());
+    var person1=new Person("yihu");
+    console.log(person2.getName());
+    console.log(person1.getName());
+    person1.setName("yihoo");
+    console.log(person1.getName());
+
+/*    var person2=new Person("mq");
+    console.log(person2.getName());
+    console.log(person1.getName());*/
+
+</script>

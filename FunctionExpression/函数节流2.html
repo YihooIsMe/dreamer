@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数节流思想2</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function throttle(method, context) {
+        clearTimeout(method.tId);
+        method.tId=setTimeout(function () {
+            method.call(context);
+        },100)
+    }
+</script>

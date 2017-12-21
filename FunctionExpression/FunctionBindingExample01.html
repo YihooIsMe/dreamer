@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Function Binding Example</title>
+</head>
+<body>
+<button id="btn">Click Me!</button>
+</body>
+</html>
+<script>
+    var handler={
+        message:"hello world!",
+        handleClick:function () {
+            alert(this.message);
+        }
+    };
+
+    document.getElementById("btn").onclick=function (ev) {
+        handler.handleClick();
+    }
+</script>

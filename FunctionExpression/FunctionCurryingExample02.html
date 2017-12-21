@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Function Currying Example 01</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function curry(fn) {
+        var args=Array.prototype.slice.call(arguments,1);
+        return function () {
+            var innerArgs=Array.prototype.slice.call(arguments);
+            var finalArgs=args.concat(innerArgs);
+            return fn.apply(null,finalArgs);
+        };
+    }
+
+    function add(num1, num2) {
+        return num1+num2;
+    }
+
+    var curriedAdd=curry(add,5);
+    document.write(curriedAdd(3)+"<br>");
+
+    var curriedAdd2=curry(add,10,8);
+    document.write(curriedAdd2());
+
+
+</script>

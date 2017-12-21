@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数节流基本思想</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var processor={
+        timeoutId:null,
+        // 函数实际执行的代码
+        performProcessing:function () {
+            console.log("函数节流");
+        },
+        process:function () {
+            clearTimeout(this.timeoutId);
+            var that=this;
+
+            this.timeoutId=setTimeout(function () {
+                console.log(this);
+                console.log(that);
+                that.performProcessing();
+            },100)
+        }
+    };
+
+    processor.process();
+</script>

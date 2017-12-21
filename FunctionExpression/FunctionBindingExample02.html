@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Function Binding Example</title>
+</head>
+<body>
+<button id="btn">Click Me!</button>
+</body>
+</html>
+<script>
+    function bind(fn, content) {
+        return function () {
+            return fn.apply(content,arguments);
+        }
+    }
+    var handler={
+        message:"hello world!",
+        handleClick:function () {
+            alert(this.message);
+        }
+    };
+
+    console.log(bind(handler.handleClick,handler));
+    document.getElementById("btn").onclick=bind(handler.handleClick,handler);
+</script>

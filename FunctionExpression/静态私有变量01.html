@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>静态私有变量</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    (function () {
+       var privateVariable=10;
+
+       function privateFunction() {
+           return false;
+       }
+
+       MyObject=function () {
+
+       };
+
+       MyObject.prototype.publicMethod=function () {
+           privateVariable++;
+           return privateFunction();
+       }
+    })();
+
+    var obj=new MyObject();
+    console.log(obj.publicMethod())
+</script>

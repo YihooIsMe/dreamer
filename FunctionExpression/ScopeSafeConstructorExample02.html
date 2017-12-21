@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Scope Safe Constructor Example</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function Polyon(sides) {
+        if (this instanceof Polyon){
+            this.sides=sides;
+            this.getArea=function () {
+                return 0;
+            };
+        }else {
+            return new Polyon(sides);
+        }
+/*
+        this.sides=sides;
+        this.getArea=function () {
+            return 0;
+        };
+*/
+    }
+
+    function Rectangle(width, height) {
+
+        this.width=width;
+        this.height=height;
+        this.getArea=function () {
+            return this.width*this.height;
+        };
+        Polyon.call(this,2);
+    }
+
+    Rectangle.prototype=new Polyon();
+    var rect=new Rectangle(5,10);
+    console.log(rect);
+    console.log(rect.sides);
+    console.log(Polyon.prototype);
+    console.log(Rectangle.prototype);
+    console.log((new Rectangle(5,10)) instanceof Polyon);
+    console.log(rect instanceof Polyon);
+    console.log(rect instanceof Rectangle);
+/*
+    console.log(rect.getArea());
+    console.log(Rectangle.prototype);
+    console.log(Rectangle.prototype.getArea);
+*/
+</script>

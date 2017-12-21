@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模块模式</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var singleton=function () {
+
+        var privateVariable=10;
+
+        function privateFunction() {
+            return false;
+        }
+
+        return {
+            publicProperty:true,
+            publicMethod:function () {
+                privateVariable++;
+                return privateFunction();
+            }
+        }
+    };
+
+    console.log(singleton().publicProperty);
+    console.log(singleton().publicMethod());
+</script>

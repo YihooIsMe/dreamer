@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组分块技术</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var array=[1,2,3,4,5,6,7,8,9,10];
+    setTimeout(function () {
+        var item=array.shift();
+        console.log(item);
+        if(array.length>0){
+            setTimeout(arguments.callee,1000);
+        }
+    },1000)
+</script>
