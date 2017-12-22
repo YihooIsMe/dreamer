@@ -13,7 +13,8 @@
         html, body {
             height: 100%;
         }
-        .container{
+
+        .container {
             height: 30px;
         }
     </style>
@@ -22,42 +23,60 @@
 <div class="container">
     <audio id="audioControl" controls="controls">
         <source src="http://222.73.113.141:9998/File/2017-12-02/070759d2143f5c-7507-48e1-82f8-1906c921a99e.mp3" type="audio/mpeg">
-        亲，该换浏览器啦！</audio>
+        亲，该换浏览器啦！
+    </audio>
     <img id="music_btn" src="img/record.png" style="display: inline-block" alt=""/>
 </div>
 </body>
 </html>
 <script>
     $(document).ready(function () {
-        var M,play=false;
-        $("#music_btn").click(function () {
-            if(play){
-                $("#audioControl")[0].pause();
-                clearInterval(M);
-                $("#music_btn").show();
-                play=true;
-            }else {
-                $("#audioControl")[0].play();
-                clearInterval(M);
-                M = setInterval(function () {
+        var M,
+            audioObject = {
+                audioEle : document.getElementById("audioControl"),
+                blinking: function () {
                     if ($("#music_btn")[0].style.display !== "none") {
                         $("#music_btn").fadeOut(800);
                     } else {
                         $("#music_btn").fadeIn(500);
                     }
-                }, 100);
-                play=true;
-                $("#music_btn").show();
-            }
+                },
+                show: function () {
+                    $("#music_btn").show(0);
+                },
+                clear:function () {
+                    if (M) {
+                        clearInterval(M);
+                    }
+                }
+            };
 
+        $("#music_btn").click(function () {
+            if ($("#audioControl")[0].paused) {
+                $("#audioControl")[0].play();
+                audioObject.clear();
+                M = setInterval(audioObject.blinking, 100);
+            } else {
+                $("#audioControl")[0].pause();
+                audioObject.clear();
+                setTimeout(audioObject.show, 100)
+            }
         });
 
-        document.getElementById("audioControl").onended = function () {
-            clearInterval(M);
-            setTimeout(function () {
-                $("#music_btn").show();
-            },100);
 
-        }
+
+        audioObject.audioEle.onpause = function (ev) {
+            audioObject.clear();
+            setTimeout(audioObject.show, 100);
+        };
+        audioObject.audioEle.onplay = function (ev) {
+            audioObject.clear();
+            M = setInterval(audioObject.blinking, 100);
+        };
+        audioObject.audioEle.onended = function () {
+            audioObject.clear();
+            setTimeout(audioObject.show, 100);
+        };
+
     });
 </script>
