@@ -9,13 +9,14 @@
         body {
             margin: 0;
         }
-
         html, body {
             height: 100%;
         }
-
         .container {
             height: 30px;
+        }
+        #music_btn{
+            cursor: pointer;
         }
     </style>
 </head>
@@ -52,18 +53,16 @@
             };
 
         $("#music_btn").click(function () {
-            if ($("#audioControl")[0].paused) {
-                $("#audioControl")[0].play();
+            if (audioObject.audioEle.paused) {
+                audioObject.audioEle.play();
                 audioObject.clear();
                 M = setInterval(audioObject.blinking, 100);
             } else {
-                $("#audioControl")[0].pause();
+                audioObject.audioEle.pause();
                 audioObject.clear();
                 setTimeout(audioObject.show, 100)
             }
         });
-
-
 
         audioObject.audioEle.onpause = function (ev) {
             audioObject.clear();
