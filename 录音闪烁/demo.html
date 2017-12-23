@@ -64,18 +64,25 @@
             }
         });
 
-        audioObject.audioEle.onpause = function (ev) {
-            audioObject.clear();
-            setTimeout(audioObject.show, 100);
-        };
-        audioObject.audioEle.onplay = function (ev) {
-            audioObject.clear();
-            M = setInterval(audioObject.blinking, 100);
-        };
-        audioObject.audioEle.onended = function () {
-            audioObject.clear();
-            setTimeout(audioObject.show, 100);
-        };
+        function audioEvent(ev) {
+            audioObject.audioEle[ev]=function () {
+                switch (ev){
+                    case "onpause":
+                    case "onended":
+                        audioObject.clear();
+                        setTimeout(audioObject.show, 100);
+                        break;
+                    case "onplay":
+                        audioObject.clear();
+                        M = setInterval(audioObject.blinking, 100);
+                        break;
+                }
+            }
+        }
+
+        audioEvent("onpause");
+        audioEvent("onplay");
+        audioEvent("onended");
 
     });
 </script>

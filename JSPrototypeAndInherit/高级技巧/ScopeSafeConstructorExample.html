@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Scope Safe Constructor Example</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function Person(name, age, job) {
+        console.log(this);
+        if(this instanceof Person){
+            this.name=name;
+            this.age=age;
+            this.job=job;
+        }else {
+            return new Person(name,age,job);
+        }
+    }
+
+    var person1=Person("yihu",26,"IT");
+    console.log(window.name);
+    console.log(person1.name);
+
+    var person2=new Person("tfy",25,"会计");
+    console.log(window.name);
+    console.log(person2.name);
+</script>
