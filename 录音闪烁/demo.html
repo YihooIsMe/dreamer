@@ -32,8 +32,8 @@
 </html>
 <script>
     $(document).ready(function () {
-        var M,
-            audioObject = {
+        var audioObject = {
+                M:null,
                 audioEle : document.getElementById("audioControl"),
                 blinking: function () {
                     if ($("#music_btn")[0].style.display !== "none") {
@@ -46,8 +46,8 @@
                     $("#music_btn").show(0);
                 },
                 clear:function () {
-                    if (M) {
-                        clearInterval(M);
+                    if (this.M) {
+                        clearInterval(this.M);
                     }
                 }
             };
@@ -56,7 +56,7 @@
             if (audioObject.audioEle.paused) {
                 audioObject.audioEle.play();
                 audioObject.clear();
-                M = setInterval(audioObject.blinking, 100);
+                audioObject.M = setInterval(audioObject.blinking, 100);
             } else {
                 audioObject.audioEle.pause();
                 audioObject.clear();
@@ -74,7 +74,7 @@
                         break;
                     case "onplay":
                         audioObject.clear();
-                        M = setInterval(audioObject.blinking, 100);
+                        audioObject.M = setInterval(audioObject.blinking, 100);
                         break;
                 }
             }
